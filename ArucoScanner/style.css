@@ -1,0 +1,58 @@
+:root {
+  --bg: #0b0f14;
+  --panel: #131a22;
+  --line: #243040;
+  --text: #e8eef5;
+  --muted: #8a9bb0;
+  --accent: #35d07f;
+  --accent-ink: #04210f;
+  --warn: #ffb347;
+}
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html, body { margin: 0; height: 100%; background: var(--bg); color: var(--text);
+  font: 16px/1.4 -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif; }
+body { overscroll-behavior: none; }
+#app { display: flex; flex-direction: column; height: 100%;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left); }
+
+header { display: flex; align-items: center; justify-content: space-between; padding: 8px 16px; }
+header h1 { font-size: 17px; margin: 0; font-weight: 600; letter-spacing: .2px; }
+#settingsBtn { background: none; border: 0; color: var(--muted); font-size: 22px; padding: 4px 8px; }
+
+#settings { display: flex; flex-wrap: wrap; gap: 12px 16px; padding: 8px 16px 12px; background: var(--panel); border-bottom: 1px solid var(--line); }
+#settings[hidden] { display: none; }
+#settings label { display: flex; flex-direction: column; font-size: 12px; color: var(--muted); gap: 4px; }
+#settings label.check { flex-direction: row; align-items: center; font-size: 14px; color: var(--text); }
+select { background: var(--bg); color: var(--text); border: 1px solid var(--line); border-radius: 8px; padding: 8px; font-size: 15px; }
+
+#stage { position: relative; flex: 0 0 auto; width: 100%; aspect-ratio: 3 / 4; max-height: 52vh; background: #000; overflow: hidden; }
+#stage video, #stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+#stage canvas[hidden] { display: none; }
+#overlay { pointer-events: none; }
+#splash { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 24px; text-align: center; background: rgba(11,15,20,.88); }
+#splash[hidden] { display: none; }
+#splash p { margin: 0; color: var(--muted); max-width: 30ch; }
+#splash p.err { color: var(--warn); }
+#stats { position: absolute; left: 8px; bottom: 6px; font: 11px ui-monospace, Menlo, monospace; color: rgba(255,255,255,.6); text-shadow: 0 1px 2px #000; }
+
+button, .btn, .photoBtn { font: inherit; border-radius: 10px; border: 1px solid var(--line); background: var(--panel); color: var(--text); padding: 10px 14px; cursor: pointer; display: inline-block; text-align: center; }
+button.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); font-weight: 600; padding: 12px 24px; font-size: 17px; }
+.photoBtn.secondary { background: none; border: 0; color: var(--muted); text-decoration: underline; padding: 4px; }
+button:active, .btn:active { opacity: .7; }
+
+#panel { flex: 1 1 auto; min-height: 0; overflow-y: auto; padding: 12px 16px 24px; }
+#current { text-align: center; padding: 4px 0 10px; }
+#bigId { font-size: 72px; line-height: 1; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--accent); }
+#bigId.dim { color: var(--muted); }
+#bigMeta { margin-top: 6px; color: var(--muted); font-size: 14px; min-height: 20px; }
+#live { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; min-height: 6px; margin-bottom: 8px; }
+.chip { background: var(--panel); border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px; font-size: 13px; }
+.chip b { color: var(--accent); }
+.row { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+.row > * { flex: 1 1 auto; font-size: 14px; padding: 9px 8px; }
+h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 18px 0 6px; }
+#history { list-style: none; margin: 0; padding: 0; }
+#history li { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; padding: 8px 0; border-bottom: 1px solid var(--line); }
+#history .hid { font-size: 22px; font-weight: 600; font-variant-numeric: tabular-nums; }
+#history .hmeta { color: var(--muted); font-size: 12px; text-align: right; }
+#history .empty { color: var(--muted); justify-content: center; border: 0; }

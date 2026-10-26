@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="ArUco Scan">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#0b0f14">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" href="icon-180.png">
+<title>ArUco Scanner</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <header>
+    <h1>ArUco Scanner</h1>
+    <button id="settingsBtn" aria-label="Settings">⚙︎</button>
+  </header>
+
+  <div id="settings" hidden>
+    <label>Dictionary
+      <select id="dict"></select>
+    </label>
+    <label>Detail
+      <select id="res">
+        <option value="640">Fast (640)</option>
+        <option value="800" selected>Normal (800)</option>
+        <option value="1280">High (1280)</option>
+      </select>
+    </label>
+    <label class="check"><input type="checkbox" id="sound" checked> Beep on new tag</label>
+  </div>
+
+  <main id="stage">
+    <video id="video" playsinline muted autoplay></video>
+    <canvas id="photo" hidden></canvas>
+    <canvas id="overlay"></canvas>
+    <div id="splash">
+      <p id="splashMsg">Point the back camera at an ArUco tag. The dictionary is recognised automatically.</p>
+      <button id="start" class="primary">Start camera</button>
+      <label class="photoBtn secondary">Scan a photo instead
+        <input type="file" id="photoInput" accept="image/*" hidden>
+      </label>
+    </div>
+    <div id="stats"></div>
+  </main>
+
+  <section id="panel">
+    <div id="current">
+      <div id="bigId">—</div>
+      <div id="bigMeta">No tag yet</div>
+    </div>
+    <div id="live"></div>
+    <div class="row">
+      <button id="pause">Pause</button>
+      <button id="copy">Copy ID</button>
+      <label class="btn">Photo<input type="file" id="photoInput2" accept="image/*" hidden></label>
+      <button id="export">Export</button>
+      <button id="clear">Clear</button>
+    </div>
+    <h2>History</h2>
+    <ul id="history"></ul>
+  </section>
+</div>
+
+<script src="lib/cv.js"></script>
+<script src="lib/aruco.js"></script>
+<script src="lib/dict/aruco_4x4_1000.js"></script>
+<script src="lib/dict/aruco_5x5_1000.js"></script>
+<script src="lib/dict/aruco_6x6_1000.js"></script>
+<script src="lib/dict/aruco_7x7_1000.js"></script>
+<script src="lib/dict/aruco_default_opencv.js"></script>
+<script src="lib/dict/aruco_default.js"></script>
+<script src="lib/dict/aruco_mip_16h3.js"></script>
+<script src="lib/dict/aruco_mip_25h7.js"></script>
+<script src="lib/dict/aruco_mip_36h12.js"></script>
+<script src="lib/dict/apriltag_16h5.js"></script>
+<script src="lib/dict/apriltag_25h7.js"></script>
+<script src="lib/dict/apriltag_25h9.js"></script>
+<script src="lib/dict/apriltag_36h9.js"></script>
+<script src="lib/dict/apriltag_36h10.js"></script>
+<script src="lib/dict/apriltag_36h11.js"></script>
+<script src="lib/dict/artag.js"></script>
+<script src="lib/dict/artoolkitplus.js"></script>
+<script src="lib/dict/artoolkitplusbch.js"></script>
+<script src="detector.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
